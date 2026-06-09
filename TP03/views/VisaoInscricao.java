@@ -2,13 +2,7 @@ package TP03.views;
 
 import TP03.models.*;
 import java.util.Scanner;
-import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
 
 public class VisaoInscricao {
     private Scanner scanner = new Scanner(System.in);
@@ -19,33 +13,33 @@ public class VisaoInscricao {
     private int totalPaginas;
 
     /**
-     * Menu principal de inscrições
+     * Menu principal de inscricoes
      */
     public void mostrarMenuInscricoes() {
         System.out.println("\n       EntrePares 1.0                  ");
         System.out.println("========================================");
-        System.out.println(" > Início > Minhas inscrições         ");
+        System.out.println(" > Inicio > Minhas inscricoes          ");
         System.out.println("");
-        System.out.println(" (A) Buscar curso por código          ");
-        System.out.println(" (B) Buscar curso por palavras-chave  ");
-        System.out.println(" (C) Listar todos os cursos           ");
-        System.out.println(" (R) Retornar ao menu anterior        ");
-        System.out.print("Opção: ");
+        System.out.println(" (A) Buscar curso por codigo           ");
+        System.out.println(" (B) Buscar curso por palavras-chave   ");
+        System.out.println(" (C) Listar todos os cursos            ");
+        System.out.println(" (R) Retornar ao menu anterior         ");
+        System.out.print("Opcao: ");
     }
 
     /**
-     * Mostra a tela de Minhas Inscrições com lista e opções de ação
+     * Mostra a tela de Minhas Inscricoes com lista e opcoes de acao
      */
     public void mostrarTelaMinhasInscricoes(Curso[] cursos) {
         System.out.println("\n       EntrePares 1.0                  ");
         System.out.println("========================================");
-        System.out.println(" > Início > Minhas inscrições         ");
+        System.out.println(" > Inicio > Minhas inscricoes          ");
         System.out.println("");
 
         if (cursos == null || cursos.length == 0) {
-            System.out.println(" Você não tem inscrições registradas.");
+            System.out.println(" Voce nao tem inscricoes registradas.");
         } else {
-            System.out.println(" Inscrições atuais:");
+            System.out.println(" Inscricoes atuais:");
             System.out.println("");
             for (int i = 0; i < Math.min(cursos.length, 10); i++) {
                 String estado = obterEstadoCurso(cursos[i].getEstado());
@@ -55,27 +49,26 @@ public class VisaoInscricao {
 
         System.out.println("");
         System.out.println("----------------------------------------");
-        System.out.println(" Opções:");
-        System.out.println(" (A) Buscar curso por código          ");
-        System.out.println(" (B) Buscar curso por palavras-chave  ");
-        System.out.println(" (C) Listar todos os cursos           ");
-        System.out.println(" (R) Retornar ao menu anterior        ");
-        System.out.print("Opção: ");
+        System.out.println(" Opcoes:");
+        System.out.println(" (A) Buscar curso por codigo           ");
+        System.out.println(" (B) Buscar curso por palavras-chave   ");
+        System.out.println(" (C) Listar todos os cursos            ");
+        System.out.println(" (R) Retornar ao menu anterior         ");
+        System.out.print("Opcao: ");
     }
 
     /**
-     * Exibe lista de cursos com paginação
+     * Exibe lista de cursos com paginacao
      */
     public void mostrarListaCursos(Curso[] cursos, String titulo) {
         if (cursos == null || cursos.length == 0) {
             System.out.println("\n       EntrePares 1.0                  ");
             System.out.println("========================================");
-            System.out.println(" > Início > Minhas inscrições > " + titulo);
+            System.out.println(" > Inicio > Minhas inscricoes > " + titulo);
             System.out.println("\n Nenhum curso encontrado.");
             return;
         }
 
-        // Calcular paginação
         this.cursosPaginados = cursos;
         this.totalPaginas = (int) Math.ceil((double) cursos.length / ITENS_POR_PAGINA);
 
@@ -83,18 +76,17 @@ public class VisaoInscricao {
             paginaAtual = totalPaginas;
         }
 
-        // Exibir página atual
         exibirPagina(titulo);
     }
 
     /**
-     * Exibe a página atual
+     * Exibe a pagina atual
      */
     private void exibirPagina(String titulo) {
         System.out.println("\n       EntrePares 1.0                  ");
         System.out.println("========================================");
-        System.out.println(" > Início > Minhas inscrições > " + titulo);
-        System.out.println("\nPágina " + paginaAtual + " de " + totalPaginas + "\n");
+        System.out.println(" > Inicio > Minhas inscricoes > " + titulo);
+        System.out.println("\nPagina " + paginaAtual + " de " + totalPaginas + "\n");
 
         int indiceInicio = (paginaAtual - 1) * ITENS_POR_PAGINA;
         int indiceFim = Math.min(indiceInicio + ITENS_POR_PAGINA, cursosPaginados.length);
@@ -108,13 +100,13 @@ public class VisaoInscricao {
 
         if (totalPaginas > 1) {
             System.out.println("\n----------------------------------------");
-            System.out.println(" (A) Página anterior");
-            System.out.println(" (B) Próxima página");
+            System.out.println(" (A) Pagina anterior");
+            System.out.println(" (B) Proxima pagina");
         } else {
             System.out.println("\n----------------------------------------");
         }
         System.out.println(" (R) Retornar ao menu anterior");
-        System.out.print("\nOpção: ");
+        System.out.print("\nOpcao: ");
     }
 
     /**
@@ -125,9 +117,9 @@ public class VisaoInscricao {
             case Curso.ATIVO_INSCRICOES:
                 return "";
             case Curso.ATIVO_SEM_INSCRICOES:
-                return "(INSCRIÇÕES ENCERRADAS)";
+                return "(INSCRICOES ENCERRADAS)";
             case Curso.CONCLUIDO:
-                return "(CONCLUÍDO)";
+                return "(CONCLUIDO)";
             case Curso.CANCELADO:
                 return "(CANCELADO)";
             default:
@@ -136,42 +128,46 @@ public class VisaoInscricao {
     }
 
     /**
-     * Mostra detalhes de um curso para inscrição
+     * Mostra detalhes de um curso para inscricao
      */
     public void mostrarDetalheCursoParaInscricao(Curso curso, String nomeAutor) {
         System.out.println("\n       EntrePares 1.0                  ");
         System.out.println("========================================");
-        System.out.println(" > Início > Minhas inscrições > Lista de cursos > " + curso.getNome());
+        System.out.println(" > Inicio > Minhas inscricoes > Lista de cursos > " + curso.getNome());
         System.out.println("");
-        System.out.println(" CÓDIGO......: " + curso.getCodigoCompartilhavel());
+        System.out.println(" CODIGO......: " + curso.getCodigoCompartilhavel());
         System.out.println(" CURSO.......: " + curso.getNome());
         System.out.println(" AUTOR.......: " + nomeAutor);
-        System.out.println(" DESCRIÇÃO...: " + curso.getDescricao());
-        System.out.println(" DATA INÍCIO.: " + curso.getDataInicio().format(FORMATO_DATA));
+        System.out.println(" DESCRICAO...: " + curso.getDescricao());
+        System.out.println(" DATA INICIO.: " + curso.getDataInicio().format(FORMATO_DATA));
         System.out.println("");
         System.out.println("----------------------------------------");
-        System.out.println(" (A) Fazer minha inscrição no curso");
+        if (curso.getEstado() == Curso.ATIVO_INSCRICOES) {
+            System.out.println(" (A) Fazer minha inscricao no curso");
+        } else {
+            System.out.println(" " + obterEstadoCurso(curso.getEstado()));
+        }
         System.out.println(" (R) Retornar ao menu anterior");
-        System.out.print("Opção: ");
+        System.out.print("Opcao: ");
     }
 
     /**
-     * Mostra as inscrições do usuário
+     * Mostra as inscricoes do usuario
      */
     public void mostrarMinhasInscricoes(Curso[] cursos) {
         if (cursos == null || cursos.length == 0) {
             System.out.println("\n       EntrePares 1.0                  ");
             System.out.println("========================================");
-            System.out.println(" > Início > Minhas inscrições        ");
-            System.out.println("\n Você não tem inscrições.");
+            System.out.println(" > Inicio > Minhas inscricoes          ");
+            System.out.println("\n Voce nao tem inscricoes.");
             System.out.println("\n (R) Retornar");
-            System.out.print("Opção: ");
+            System.out.print("Opcao: ");
             return;
         }
 
         System.out.println("\n       EntrePares 1.0                  ");
         System.out.println("========================================");
-        System.out.println(" > Início > Minhas inscrições        ");
+        System.out.println(" > Inicio > Minhas inscricoes          ");
         System.out.println("");
 
         for (int i = 0; i < Math.min(cursos.length, 10); i++) {
@@ -182,39 +178,39 @@ public class VisaoInscricao {
         System.out.println("");
         System.out.println("----------------------------------------");
         System.out.println(" (R) Retornar");
-        System.out.print("Opção: ");
+        System.out.print("Opcao: ");
     }
 
     /**
-     * Mostra detalhes da inscrição do usuário
+     * Mostra detalhes da inscricao do usuario
      */
     public void mostrarDetalheInscricao(Curso curso, String nomeAutor) {
         System.out.println("\n       EntrePares 1.0                  ");
         System.out.println("========================================");
-        System.out.println(" > Início > Minhas inscrições > " + curso.getNome());
+        System.out.println(" > Inicio > Minhas inscricoes > " + curso.getNome());
         System.out.println("");
-        System.out.println(" CÓDIGO......: " + curso.getCodigoCompartilhavel());
+        System.out.println(" CODIGO......: " + curso.getCodigoCompartilhavel());
         System.out.println(" CURSO.......: " + curso.getNome());
         System.out.println(" AUTOR.......: " + nomeAutor);
-        System.out.println(" DESCRIÇÃO...: " + curso.getDescricao());
-        System.out.println(" DATA INÍCIO.: " + curso.getDataInicio().format(FORMATO_DATA));
+        System.out.println(" DESCRICAO...: " + curso.getDescricao());
+        System.out.println(" DATA INICIO.: " + curso.getDataInicio().format(FORMATO_DATA));
         System.out.println("");
         System.out.println("----------------------------------------");
-        System.out.println(" (A) Cancelar minha inscrição no curso");
+        System.out.println(" (A) Cancelar minha inscricao no curso");
         System.out.println(" (R) Retornar ao menu anterior");
-        System.out.print("Opção: ");
+        System.out.print("Opcao: ");
     }
 
     /**
-     * Pede o código de um curso para busca
+     * Pede o codigo de um curso para busca
      */
     public String pegarCodigoCurso() {
-        System.out.print("Digite o código do curso: ");
+        System.out.print("Digite o codigo do curso: ");
         return scanner.nextLine().trim();
     }
 
     /**
-     * Pega opção do usuário
+     * Pega palavras de busca
      */
     public String pegarPalavrasBusca() {
         System.out.print("Digite as palavras-chave do curso: ");
@@ -230,7 +226,7 @@ public class VisaoInscricao {
     }
 
     /**
-     * Pega número (para seleção de item)
+     * Pega numero para selecao de item
      */
     public int pegarNumero() {
         try {
@@ -242,14 +238,14 @@ public class VisaoInscricao {
     }
 
     /**
-     * Retorna a página atual
+     * Retorna a pagina atual
      */
     public int getPaginaAtual() {
         return paginaAtual;
     }
 
     /**
-     * Avança para a próxima página
+     * Avanca para a proxima pagina
      */
     public void proximaPagina() {
         if (paginaAtual < totalPaginas) {
@@ -258,7 +254,7 @@ public class VisaoInscricao {
     }
 
     /**
-     * Volta para a página anterior
+     * Volta para a pagina anterior
      */
     public void paginaAnterior() {
         if (paginaAtual > 1) {
@@ -267,44 +263,41 @@ public class VisaoInscricao {
     }
 
     /**
-     * Reseta o índice de página
+     * Reseta o indice de pagina
      */
     public void resetarPagina() {
         paginaAtual = 1;
     }
 
-    // Mensagens de sucesso/erro
-
     public void mostrarMensagemInscricaoRealizada() {
-        System.out.println("\n ✓ Inscrição realizada com sucesso!");
+        System.out.println("\n Inscricao realizada com sucesso!");
     }
 
     public void mostrarMensagemJaInscrito() {
-        System.out.println("\n ✗ Você já está inscrito neste curso.");
+        System.out.println("\n Voce ja esta inscrito neste curso.");
     }
 
     public void mostrarMensagemInscricoesEncerradas() {
-        System.out.println("\n ✗ As inscrições para este curso foram encerradas.");
+        System.out.println("\n As inscricoes para este curso foram encerradas.");
     }
 
     public void mostrarMensagemCursoNaoEncontrado() {
-        System.out.println("\n ✗ Curso não encontrado.");
+        System.out.println("\n Curso nao encontrado.");
     }
 
     public void mostrarMensagemCancelamentoRealizado() {
-        System.out.println("\n ✓ Inscrição cancelada com sucesso!");
+        System.out.println("\n Inscricao cancelada com sucesso!");
     }
 
     public void mostrarMensagemErro(String mensagem) {
-        System.out.println("\n ✗ Erro: " + mensagem);
+        System.out.println("\n Erro: " + mensagem);
     }
 
     public void mostrarMensagemOpcaoInvalida() {
-        System.out.println("\n ✗ Opção inválida!");
+        System.out.println("\n Opcao invalida!");
     }
 
     public void mostrarMensagemFuncionalidadeEmDesenvolvimento() {
         System.out.println("\n Funcionalidade em desenvolvimento (TP3).");
     }
 }
-
