@@ -1,6 +1,6 @@
 # Relatório do Trabalho Prático 03 - AEDS III
 
-Link do Vídeo da Plataforma no YouTube: [(https://youtu.be/1j8hmA_RMUQ)]
+Link do Vídeo da Plataforma no YouTube: [TP03-VIDEO](https://youtu.be/1j8hmA_RMUQ)
 
 ## Participantes
 
