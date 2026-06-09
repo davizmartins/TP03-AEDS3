@@ -209,11 +209,11 @@ Na visão de inscrições, a listagem geral de cursos apresenta paginação de 1
 
 ### Figura 1 - Busca Por Palavra Chave
 
-![](img/telaBusca.png)
+![](TP03/img/telaBusca.png)
 
 ### Figura 2 - Resultado da Busca por Palavra Chave
 
-![](img/rBusca.png)
+![](TP03/img/rBusca.png)
 
 ## Checklist obrigatório
 
